@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "RapidAPI Hub - Cricket API Free Data": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp.rapidapi.com",
+        "--header",
+        "x-api-host: cricket-api-free-data.p.rapidapi.com",
+        "--header",
+        "x-api-key: ef6a9614fdmsh83dd836c0828abep145b47jsn86476d47ab06"
+      ]
+    }
+  }
+}

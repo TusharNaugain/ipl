@@ -1,0 +1,325 @@
+/* ─── Fair99.in Premium CSS — Missio Betting Platform ────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ─── CSS Variables (color tokens) ──────────────────────────────────────── */
+:root {
+  /* --- App Shell --- */
+  --bg:          #eef2f6;      /* Main content area: off-white / light blue-grey */
+  --navy-2:      #1e1b3a;      /* Top nav & section headers: deep purple */
+  --navy-3:      #ffffff;      /* Match row background: white */
+  --navy-4:      #f1f5f9;      /* Alternating row: very light */
+  --navy-5:      #e2e8f0;      /* Borders / subtle dividers */
+  --border:      #e2e8f0;      /* Main border color */
+
+  /* --- Text --- */
+  --text-1:      #111827;      /* Main dark text */
+  --text-2:      #374151;      /* Secondary text */
+  --text-3:      #6b7280;      /* Muted labels */
+
+  /* --- Accent --- */
+  --yellow:      #f97316;      /* Orange — primary accent (Fair99 orange) */
+  --yellow-mild: rgba(249,115,22,0.12);
+
+  /* --- Odds Boxes (Fair99 exact colors) --- */
+  --back:        #7dd3fc;      /* Cyan  — Back (Buy) box */
+  --back-dark:   #0ea5e9;
+  --lay:         #f9a8d4;      /* Pink  — Lay (Sell) box */
+  --lay-dark:    #ec4899;
+
+  /* --- Status Colors --- */
+  --green:       #16a34a;
+  --red:         #dc2626;
+  --accent:      #f97316;
+  --transition:  all 0.18s ease;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 14px; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-2);
+  line-height: 1.5;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select { font-family: inherit; }
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+
+/* ─── Match Rows (Home page / IPL List) ──────────────────────────────────── */
+.match-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--navy-3);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--transition);
+  gap: 12px;
+}
+.match-row:hover { background: var(--navy-4); }
+.match-row:first-of-type { border-radius: 6px 6px 0 0; }
+.match-row:last-of-type  { border-radius: 0 0 6px 6px; border-bottom: none; }
+
+.match-info { flex: 1; min-width: 0; }
+.match-teams-text { font-size: 13px; font-weight: 700; color: var(--text-1); }
+.match-meta {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--text-3); margin-top: 3px; flex-wrap: wrap;
+}
+
+/* ─── In-Play Badge ──────────────────────────────────────────────────────── */
+.inplay-badge {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.5px;
+  background: #dc2626; color: #fff; padding: 2px 7px; border-radius: 3px;
+  text-transform: uppercase;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ─── Sport Section Header (Fair99 dark purple strip with 1 X 2 columns) ─── */
+.sport-section-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  background: #2d2b55;
+  color: #d1d5db;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-radius: 4px 4px 0 0;
+  margin-top: 14px;
+  user-select: none;
+}
+.sport-section-header .sport-name { flex: 1; }
+.sport-section-header .col-labels { display: flex; gap: 4px; }
+.sport-section-header .col-label {
+  width: 52px; text-align: center; font-size: 11px; font-weight: 700; color: #9ca3af;
+}
+
+/* ─── Fair99 Dense Match Row ─────────────────────────────────────────────── */
+.f99-match-row {
+  display: flex; align-items: center;
+  padding: 10px 14px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.12s;
+  gap: 10px;
+}
+.f99-match-row:hover { background: #f8fafc; }
+.f99-match-row:last-child { border-bottom: none; border-radius: 0 0 4px 4px; }
+
+/* ─── Back / Lay Odds Boxes ──────────────────────────────────────────────── */
+.odds-group {
+  display: flex;
+  gap: 3px;
+}
+
+.odds-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  min-height: 42px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+  padding: 4px 2px;
+  border: none;
+}
+.odds-box:hover { filter: brightness(1.2); transform: translateY(-1px); }
+.odds-box:active { transform: translateY(0); }
+
+.odds-box.back {
+  background: var(--back);
+}
+.odds-box.lay {
+  background: var(--lay);
+}
+
+.odds-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0b0f1a;
+  line-height: 1.1;
+}
+.odds-size {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.55);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Flash animations */
+.back-flash { animation: flashBlue 0.4s ease; }
+.lay-flash  { animation: flashPink 0.4s ease; }
+@keyframes flashBlue { 0%,100%{background:var(--back)} 50%{background:#82c4f0} }
+@keyframes flashPink { 0%,100%{background:var(--lay)}  50%{background:#f4c8e0} }
+
+.odds-label {
+  font-size: 9px; font-weight: 700; text-align: center;
+  color: var(--text-3); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* ─── Sport Tabs ─────────────────────────────────────────────────────────── */
+.sport-tabs {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+}
+.sport-tab {
+  padding: 5px 14px; border: 1px solid var(--border); border-radius: 20px;
+  font-size: 12px; font-weight: 600; cursor: pointer; color: var(--text-2);
+  background: transparent; transition: var(--transition); white-space: nowrap;
+}
+.sport-tab:hover { border-color: rgba(242,184,36,0.4); color: var(--yellow); background: var(--yellow-mild); }
+.sport-tab.active { border-color: var(--yellow); color: var(--yellow); background: var(--yellow-mild); font-weight: 700; }
+
+/* ─── Match Section Header ───────────────────────────────────────────────── */
+.match-section-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; background: var(--navy-2);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px; font-weight: 800; color: var(--text-2);
+  text-transform: uppercase; letter-spacing: 0.8px;
+}
+
+/* ─── Promo Banner ────────────────────────────────────────────────────────── */
+.promo-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; border-radius: 10px; margin-bottom: 16px;
+  background: linear-gradient(135deg, #1e2d4a 0%, #0d1722 100%);
+  border: 1px solid rgba(242,184,36,0.2);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+.promo-title { font-size: 18px; font-weight: 800; color: var(--yellow); }
+.promo-sub   { font-size: 12px; color: var(--text-2); margin-top: 4px; }
+
+/* ─── Section Header ─────────────────────────────────────────────────────── */
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.section-title  { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: var(--text-1); }
+.title-dot { width: 4px; height: 18px; border-radius: 2px; background: var(--yellow); }
+.see-all { background: none; border: none; color: var(--yellow); font-size: 12px; cursor: pointer; font-weight: 600; font-family: inherit; }
+
+/* ─── Game Grid ──────────────────────────────────────────────────────────── */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.game-card {
+  border-radius: 10px; overflow: hidden; cursor: pointer;
+  background: var(--navy-3); border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.game-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); border-color: rgba(242,184,36,0.2); }
+
+.game-card-thumb {
+  height: 90px; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+
+.hot-badge {
+  position: absolute; top: 6px; right: 6px;
+  background: #e74c3c; color: #fff; font-size: 9px; font-weight: 800;
+  padding: 2px 6px; border-radius: 3px;
+}
+.new-badge {
+  position: absolute; top: 6px; right: 6px;
+  background: #2ecc71; color: #fff; font-size: 9px; font-weight: 800;
+  padding: 2px 6px; border-radius: 3px;
+}
+
+.game-card-body { padding: 8px 10px; }
+.game-card-name { font-size: 12px; font-weight: 700; color: var(--text-1); }
+.game-card-tag  { font-size: 10px; color: var(--text-3); margin-top: 2px; }
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+.btn {
+  padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 13px;
+  cursor: pointer; border: none; transition: var(--transition); font-family: inherit;
+  color: var(--text-2); background: var(--navy-4);
+}
+.btn:hover { filter: brightness(1.1); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary { background: var(--yellow); color: #0b0f1a; }
+.btn-primary:hover { background: #f5c842; }
+
+.btn-outline {
+  background: transparent; border: 1px solid var(--border); color: var(--text-2);
+}
+.btn-outline:hover { border-color: rgba(242,184,36,0.4); color: var(--yellow); }
+
+/* ─── Form ────────────────────────────────────────────────────────────────── */
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block; font-size: 11px; font-weight: 700; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.form-group input,
+.form-group select {
+  width: 100%; padding: 10px 12px;
+  background: var(--navy-4); border: 1px solid var(--border);
+  border-radius: 6px; color: var(--text-1); font-size: 14px; outline: none;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus { border-color: rgba(242,184,36,0.5); }
+.form-group input::placeholder { color: var(--text-3); }
+
+/* ─── Table ───────────────────────────────────────────────────────────────── */
+.f-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.f-table th {
+  background: var(--navy-4); color: var(--text-3); font-size: 10px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 10px 14px; text-align: left;
+}
+.f-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-2); }
+.f-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* ─── Empty State ─────────────────────────────────────────────────────────── */
+.empty-state {
+  text-align: center; padding: 48px 24px;
+  color: var(--text-3); font-size: 14px;
+}
+.empty-state h3 { font-size: 16px; color: var(--text-2); margin: 12px 0 6px; font-weight: 700; }
+
+/* ─── Loading ─────────────────────────────────────────────────────────────── */
+.loading {
+  display: flex; align-items: center; gap: 10; padding: 32px;
+  color: var(--text-3); font-size: 13px; justify-content: center;
+}
+.spinner {
+  width: 20px; height: 20px; border: 2px solid var(--border);
+  border-top-color: var(--yellow); border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Error ───────────────────────────────────────────────────────────────── */
+.error-msg {
+  background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.25);
+  border-radius: 6px; padding: 10px 12px; color: #e74c3c;
+  font-size: 13px; margin-bottom: 12px;
+}
+
+/* ─── Slide-in animation ─────────────────────────────────────────────────── */
+@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
